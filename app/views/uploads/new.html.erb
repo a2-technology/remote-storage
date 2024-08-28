@@ -1,0 +1,16 @@
+<h1>New Upload</h1>
+
+<%= form_with model: @upload do |form| %>
+    <% if form.object.errors.any? %>
+        <div>
+            <% form.object.errors.full_messages.each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+    <% end %>
+    <div>
+        <%= form.label :comment %>
+        <%= form.text_area :comment%>
+    </div>
+    <%= form.button %>
+<% end %>

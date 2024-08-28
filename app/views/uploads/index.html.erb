@@ -1,0 +1,9 @@
+<h1>Uploads</h1>
+
+<% @uploads.each do |upload| %>
+    <div>
+        <h2>Created by: <%=upload.identity %></h2>
+        <%= link_to "Details", upload %>
+        <p><%= upload.comment %>
+    </div>
+<% end %>
