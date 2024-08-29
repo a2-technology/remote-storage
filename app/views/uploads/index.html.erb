@@ -1,9 +1,12 @@
 <h1>Uploads</h1>
 
 <% @uploads.each do |upload| %>
-    <div>
-        <h2>Created by: <%=upload.identity %></h2>
+    <div class="mx-auto w-4/5 rounded-md border-2 border-purple-400 bg-white p-4 shadow-lg">
+        <% if upload.placeholder? %>
+            <div class="p-2 rounder bg-gray-100 text-gray-900">Placeholder</div>
+        <% end %>
+        <h2>Created by: <%= upload.user.email%></h2>
         <%= link_to "Details", upload %>
-        <p><%= upload.comment %>
+        <p><%= upload.content %>
     </div>
 <% end %>

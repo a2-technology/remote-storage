@@ -2,11 +2,11 @@ class UploadsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-   @uploads = Upload.all 
+   @uploads = user_signed_in? ? Upload.all : Upload.published
   end
 
   def show
-    @upload = Upload.find(params[:id])
+    @upload = Upload.published.find(params[:id])
 
     rescue ActiveRecord::RecordNotFound
       redirect_to root_path
@@ -28,6 +28,6 @@ class UploadsController < ApplicationController
   private
 
     def upload_params
-      params.require(:upload).permit(:comment)
+      params.require(:upload).permit(:user_id, :content, :published_at)
     end
 end

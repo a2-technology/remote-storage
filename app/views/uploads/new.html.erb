@@ -9,8 +9,14 @@
         </div>
     <% end %>
     <div>
-        <%= form.label :comment %>
-        <%= form.text_area :comment%>
+        <%= form.label :content %>
+        <%= form.rich_text_area :content %>
     </div>
-    <%= form.button %>
+    <div>
+        <%= form.label :published_at %>
+        <%= form.datetime_select :published_at, include_blank: true %>
+    </div>
+
+    <%= form.hidden_field :user_id, value: current_user.id%>
+    <%= form.button "Create"%>
 <% end %>
