@@ -1,0 +1,20 @@
+<%= form_with model: @upload do |form| %>
+    <% if form.object.errors.any? %>
+        <div>
+            <% form.object.errors.full_messages.each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+    <% end %>
+    <div>
+        <%= form.label :content %>
+        <%= form.rich_text_area :content %>
+    </div>
+    <div>
+        <%= form.label :published_at %>
+        <%= form.datetime_select :published_at, include_blank: true %>
+    </div>
+
+    <%= form.hidden_field :user_id, value: current_user.id%>
+    <%= form.button "Create"%>
+<% end %>

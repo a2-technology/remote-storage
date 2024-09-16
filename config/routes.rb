@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   
   root "uploads#index"
-  get "/uploads/new", to: "uploads#new", as: :new_upload
-  get "/uploads/:id", to: "uploads#show", as: :upload
-  post "/uploads", to: "uploads#create", as: :uploads
+
+  resources :uploads
 end
